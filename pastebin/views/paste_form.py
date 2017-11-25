@@ -17,7 +17,7 @@ def page(request):
 				
 			new_paste = Paste(content=content, title=title, syntax=syntax, timestamp=timestamp)
 			new_paste.save()
-			return redirect('paste_list')
+			return redirect('paste_detail/' + str(new_paste.id) + '/')
 		else:
 			return render(request, 'paste_form.html', {'form':form})
 	else:
