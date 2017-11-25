@@ -4,6 +4,11 @@
 	PasteDetail
 {% endblock %}
 
+{% block load_css %}
+	li.L0, li.L1, li.L2, li.L3,li.L5, li.L6, li.L7, li.L8 {
+			list-style-type: decimal !important;}
+{% endblock %}
+
 {% block load_header %}
 	<script src='https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert'></script>
 {% endblock %}
@@ -11,6 +16,7 @@
 {% block content %}
 	<h1>{{ object.title }}</h1>
 	<p>Syntax: {{ object.syntax }}<br>
-	Date: {{ object.timestamp|date:"r" }}</p>
-	<pre class='prettyprint linenums:1'><code class='language-{{ object.syntax }}'>{{ object.content }}</code></pre>
+	Create Date: {{ object.createDate|date:"r" }}<br>
+	Expiry Date: {{ object.expiryDate|date:"r" }}</p></p>
+	<pre class='prettyprint linenums:1'><code class='language-{{ object.syntax }}'>{{ object.content }}</code></pre>	
 {% endblock %}

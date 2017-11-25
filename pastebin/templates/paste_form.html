@@ -24,21 +24,29 @@
                     </div>
 
                     <div class="input-field col l6 m6 s12">
-                      <i style ='color:#4285F4' class="material-icons prefix">lock</i>
-                      {{ form.timestamp }}
-                      <label for="timestamp">Timestamp</label>
-                      {% if form.errors %}
-                        <span style="color:#ff0000">{{ form.timestamp.errors }}</span>
-                      {% endif %}
+                      {{form.syntax}}  
                     </div>
                   </div>
 
                   <div class="row">
                     <div class="input-field col l6 m6 s12">
-					  
-					  {{form.syntax}}
-					</div>
-                  </div>
+					           <i style ='color:#4285F4' class="material-icons prefix">lock</i>
+                      {{ form.createDate }}
+                      <label for="createDate">Timestamp</label>
+                      {% if form.errors %}
+                        <span style="color:#ff0000">{{ form.createDate.errors }}</span>
+                      {% endif %}
+                    </div>
+
+                    <div class="input-field col l6 m6 s12">
+                     <i style ='color:#4285F4' class="material-icons prefix">lock</i>
+                      {{ form.expiryDate }}
+                      <label for="expiryDate">Timestamp</label>
+                      {% if form.expiryDate %}
+                        <span style="color:#ff0000">{{ form.expiryDate.errors }}</span>
+                      {% endif %}
+                    </div>
+					        </div>
 
                   <div class="row">
                     <div class="input-field col l12 m12 s12">

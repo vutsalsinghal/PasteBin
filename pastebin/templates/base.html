@@ -6,7 +6,7 @@
   <title>{% block title_html %}{% endblock %}</title>
   {% load staticfiles %}
   <link rel="icon" href="/static/images/python.ico">
-  <link href="{% static 'css/materialize97.5.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/materialize98.2.min.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
   {% block load_header %}
   {% endblock %}
   <style>
@@ -25,9 +25,6 @@
 		  -webkit-font-feature-settings: 'liga';
 		  -webkit-font-smoothing: antialiased;
 		}
-
-		li.L0, li.L1, li.L2, li.L3,li.L5, li.L6, li.L7, li.L8 {
-			list-style-type: decimal !important;}
 
 	  .icon-block {padding: 0 15px;}
 	  .icon-block .material-icons{font-size: inherit;}
@@ -61,8 +58,11 @@
 		@media only screen and (max-device-width: 480px)
 		 {#footer-down {min-height:180px;}}
 
+		#nav_color {color:#fff;background-color:#035a8d}
+		/*#nav_color {color:#fff;background-color:#04649d}
 		#nav_color {color:#fff;background-color:#BA0A35}
-		#footer_color {color:#fff;background-color:#325c00}
+		#footer_color {color:#fff;background-color:#325c00}*/
+		#footer_color {color:#fff;background-color:#026627}
 	  {% block load_css %}
 	  {% endblock %}
   </style>
@@ -83,36 +83,32 @@
 	  </ul>
 
   <!-- Dropdown Structure -->
-  <ul id="dropdown1" class="dropdown-content">
+  <ul id="dropdown1" class="dropdown-content blue-text">
+  	<li class="waves-effect"><a class='blue-text' href="{% url 'paste_list' %}">RECENT PASTES</a></li>
 	{% if user.is_authenticated %}
-		<li class="waves-effect"><a href="{% url 'paste_list' %}">RECENT PASTES</a></li>
 		{% if user.is_superuser %}
-		  <li class="divider"></li>
-		  <li><a class="waves-effect" href="/admin" target="_blank">ADMIN</a></li>
+		  <li class="waves-effect"><a class='blue-text' class="waves-effect" href="/admin" target="_blank">ADMIN</a></li>
 		{% endif %}
-		<li class="divider waves-effect"></li>
-		<li class="waves-effect waves-light"><a href="#">LOG OUT</a></li>
+		<li class="waves-effect waves-light waves-red"><a class='blue-text' href="{% url 'logout' %}">LOG OUT</a></li>
 	{% else %}
-		<li class="waves-effect waves-light"><a href="#">LOG IN</a></li>
-		<li class="waves-effect waves-light"><a href="#" title="Register new user">REGISTER</a></li>
+		<li class="waves-effect waves-light"><a class='blue-text' href="{% url 'login' %}">LOG IN</a></li>
 	{% endif %}
   </ul>
 
   <!--Mobile Demo-->
 	  <ul id="nav-mobile" class="side-nav">
-	  	<li><a class="waves-effect waves-green" href="{% url 'paste_form' %}">PASTE</a></li>
+	  	<li class="waves-effect"><a class="blue-text" href="{% url 'paste_form' %}">PASTE</a></li><br>
+	  	<li class="waves-effect"><a class="blue-text" href="{% url 'paste_list' %}">RECENT PASTES</a></li>
 		{% if user.is_authenticated %}
-		  <li><a class="waves-effect" href="{% url 'paste_list' %}">RECENT PASTES</a></li>
 		  {% if user.is_superuser %}
 		    <li class="divider"></li>
-		    <li><a class="waves-effect" href="/admin" target="_blank">ADMIN</a></li>
+		    <li class='waves-effect'><a class="blue-text" href="/admin" target="_blank">ADMIN</a></li>
 		  {% endif %}
 		  <li class="divider"></li>
-		  <li class='grey lighten-2'><a class="waves-effect waves-orange" href="#">LOG OUT</a></li>
+		  <li class='waves-effect waves-red'><a class="blue-text" href="{% url 'logout' %}">LOG OUT</a></li>
 		{% else %}
 		  <li class="divider"></li>
-		  <li><a href="#">LOG IN</a></li>
-		  <li><a href="#" title="Register new user">REGISTER</a></li>
+		  <li class='waves-effect waves-green'><a class="blue-text" href="{% url 'login' %}">LOG IN</a></li>
 	   {% endif %}
 	  </ul>
 	  <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -160,9 +156,16 @@
 <!--End Footer-->
 
   <!--  Scripts -->
+  <script src="{% static 'js/jquery2.1.3.min.js' %}"></script>
+  <script src="{% static 'js/materialize98.2.min.js' %}"></script>
+  <script type="text/javascript">
+	  $(function(){
+	    $('.button-collapse').sideNav();
+	  });
+  </script>
+  <script type='text/javascript'>
   	{% block load_js %}
   	{% endblock %}
-  <script src="{% static 'js/jquery2.1.3.min.js' %}"></script>
-  <script src="{% static 'js/materialize97.5.min.js' %}"></script>
+  </script>
  </body>
 </html>

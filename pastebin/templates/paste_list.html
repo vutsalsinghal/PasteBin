@@ -5,10 +5,12 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Recently Pasted</h1>
+	<h2>Recently Pasted</h2>
 	<ul>
 		{% for object in object_list %}
 		<li><a href="paste_detail/{{ object.id }}">{{ object.title }}</a></li>
+		{% empty %}
+			<h4>No Recent Code Snippets!</h4>
 		{% endfor %}
 	</ul>
 {% endblock %}

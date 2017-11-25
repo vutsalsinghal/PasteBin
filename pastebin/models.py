@@ -1,18 +1,21 @@
-import datetime
-from django.db import models
+from django.contrib.auth.models import User
 from django.db.models import permalink
 from django.contrib import admin
+from django.db import models
+import datetime
 
 class Paste(models.Model):
 	SYNTAX_CHOICES = (('plain', "Plain"),('python', "Python"),('html', "HTML"),('sql', "SQL"),('javascript', "Javascript"),('css', "CSS"))
 	
-	content        = models.TextField()
-	title          = models.CharField(blank=True, max_length=30)
-	syntax         = models.CharField(choices=SYNTAX_CHOICES, default='plain', max_length=50)
-	timestamp      = models.DateTimeField(default=datetime.datetime.now, blank=True)
+	author     = models.ForeignKey(User, related_name='paste_author')
+	content    = models.TextField()
+	title      = models.CharField(blank=True, max_length=30)
+	syntax     = models.CharField(choices=SYNTAX_CHOICES, default='plain', max_length=50)
+	createDate = models.DateTimeField(default=datetime.datetime.now, blank=True)
+	expiryDate = models.DateTimeField(default=datetime.datetime.now, blank=True)
 
 	class Meta:
-		ordering = ('-timestamp',)
+		ordering = ('-createDate',)
 
 	def __unicode__(self):
 		return "%s" % (self.title or "#%s" % self.id)
@@ -22,5 +25,5 @@ class Paste(models.Model):
 		return ('django.views.generic.list.ListView', None, {'object_id': self.id})
 	
 class PasteAdmin(admin.ModelAdmin):
-	list_display = ('__unicode__', 'title','syntax', 'timestamp')
-	list_filter  = ('timestamp', 'syntax')
+	list_display = ('__unicode__', 'title','syntax', 'createDate')
+	list_filter  = ('createDate', 'syntax')

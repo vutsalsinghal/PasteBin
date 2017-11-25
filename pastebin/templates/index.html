@@ -5,32 +5,23 @@
 
  {% block load_css %}
   #container_color_1 {background-color: #ccc;}
-  #color_block
-  {
-    padding: 0;
-    margin: 0;
-    display: block;
-  }
  {% endblock %}
 
  {% block content %}
   <div class="section" id="index-banner">
-    <div class="container">
-      <div class='row'></div>
-      <div class='row'></div>
-      <div class='row'></div>
-      <div class='row'></div>
-    </div>
+    <div class='row'></div>
+    <div class='row'></div>
+    <div class='row'></div>
     <div class="container" id='container_color_1'>
       <div class='row'></div>
       <div class='row'></div>
-      <div class='row'>
-        {% if user.is_authenticated %}
-          <h1 class="header center black-text">Hi {{ request.user | capfirst }}!</h1>
-        {% else %}
-          <h1 class="header center black-text">Hi There!</h1>
-        {% endif %}
-      </div>
+      <div class='row'></div>
+      {% if user.is_authenticated %}
+        <h1 class="header center black-text">Hi {{ request.user | capfirst }}!</h1>
+      {% else %}
+        <h1 class="header center black-text">Hi There!</h1>
+      {% endif %}
+      <div class='row'></div>
       <div class='row'></div>
       <div class='row'></div>
       <div class="row center">
@@ -38,15 +29,34 @@
       </div>
       <div class='row'></div>
       <div class='row'></div>
+      <div class='row'></div>
+      <div class='row'></div>
       <div class="row center">
-        <a style='background-color:#4285F4;' class="btn-large waves-effect waves-light btn" href='#'>ABOUT</a>
+        <a style='background-color:#4285F4;' id="download-button" class="btn-large waves-effect waves-light modal-trigger" href="#About" data-target="About">About</a>
       </div>
+      <div class='row'></div>
       <div class='row'></div>
       <div class='row'></div>
     </div>
   </div>
 
- {% endblock %}
+  <!-- Modal Structure -->
+ <div class="container">
+   <div class="section">
+     <div id="About" class="modal font_ubuntu">
+       <div class="modal-content blue">
+           <div class="card-content white-text">
+             <h4>About</h4>
+
+           </div>
+       </div>
+     </div>
+   </div>
+ </div>
+  <!--Modal structure ends--> {% endblock %}
 
 {% block load_js %}
+  $(document).ready(function(){
+      $('.modal').modal();
+    });
 {% endblock %}
