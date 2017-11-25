@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title_html %}
+	Recently Pasted
+{% endblock %}
+
+{% block content %}
+	<h1>Recently Pasted</h1>
+	<ul>
+		{% for object in object_list %}
+		<li><a href="{{ object.id }}">{{ object.title }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

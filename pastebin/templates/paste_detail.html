@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title_html %}
+	PasteDetail
+{% endblock %}
+
+{% block load_header %}
+	<script src='https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?skin=desert'></script>
+{% endblock %}
+
+{% block content %}
+	<h1>{{ object.title }}</h1>
+	<p>Syntax: {{ object.syntax }}<br>
+	Date: {{ object.timestamp|date:"r" }}</p>
+	<pre class='prettyprint linenums:1'><code class='language-{{ object.syntax }}'>{{ object.content }}</code></pre>
+{% endblock %}
