@@ -7,6 +7,8 @@
 {% block load_css %}
 {% endblock %}
 
+{% block h1 %}SIGN IN{% endblock %}
+
 {% block content %}
 <div class=section>
 	 <div class="container">
@@ -20,9 +22,24 @@
 		<div class='row'></div>
 		<div class='row'></div>
 		<div class='row'></div>
-		<div class='row'>
-			<a href="{% url 'social:begin' 'google-oauth2' %}">Login with Google</a><br>
+		<div class='row'></div>
+		<div class='row'></div>
+		<div class='row'></div>
+		<div class='row'></div>
+		<div class='row'></div>
+		<div class="row center">
+			<div class="col l4 m4 s12">
+				<a href="{% url 'social:begin' 'google-oauth2' %}"><img src="/static/images/google_signin.png" /></a><br>    
+			</div>
+			<div class="col l4 m4 s12">
+			    <a href="{% url 'social:begin' 'github' %}"><img src="/static/images/GitHub_Logo1.png" /></a><br>
+			</div>
+			<div class="col l4 m4 s12">
+				<a href="{% url 'social:begin' 'facebook' %}"><img src="/static/images/facebook_Logo.png" /></a><br>    
+			</div>
 		</div>
+		<div class='row'></div>
+		<div class='row'></div>
 		{% endif %}
 	 </div>
 </div>

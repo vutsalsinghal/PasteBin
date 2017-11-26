@@ -1,0 +1,6 @@
+1. Add logging facility
+2. (DONE) Add social Outh
+3. (DONE) Add login/logout
+4. Add 30 days auto-expiry of snippets - CRON task
+5. Add ability to modify expiration time for logged in users
+6. Add ability to re-direct to same page after login (OPTIONAL)
